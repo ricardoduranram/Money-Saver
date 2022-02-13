@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "yjaZ2cumUzqVF7CvFUNKqmhwg7DWnYq7fvokQH/YYkxO/dz/+ff8f6M8ErAoGc46tv056xArktiGx1gIwCa1LA==",
+  "dgSpecHash": "ZNq+H6hAqzH9kAzkykcuHFSWM05hRjdyIaiJDv8jId6UAajXj2MmDpeWsZmSH6mpFxtPGknRYmugXOK/CBoeGw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Ricardo\\Documents\\Workspaces\\Visual Studio\\Source\\repos\\Money-Saver\\Source\\Source\\Horeb.MoneySaver.Service\\Horeb.MoneySaver.Service.csproj",
+  "projectFilePath": "C:\\Users\\Ricardo\\Documents\\Workspaces\\Visual Studio\\Source\\repos\\MoneySaver\\Source\\Source\\Horeb.MoneySaver.Service\\Horeb.MoneySaver.Service.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

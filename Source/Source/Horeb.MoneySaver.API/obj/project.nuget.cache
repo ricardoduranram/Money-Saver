@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "kiqDaXaUdnZVs7BcFssavF8MQ9peksixLJ+HsiYYXqyExsmChVjlZ5OFU4reJiy0xMBvPuxlE0VuZGxOpTBVBQ==",
+  "dgSpecHash": "zM7Y03ITATAwP+jdpJXctW/wC/tQYXglUTMQ2oTDuSWzcArnLkctwy/pVO62o3n484jdQ2ctIqX3guwGzyA3vg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Ricardo\\Documents\\Workspaces\\Visual Studio\\Source\\repos\\Money-Saver\\Source\\Source\\Horeb.MoneySaver.API\\Horeb.MoneySaver.API.csproj",
+  "projectFilePath": "C:\\Users\\Ricardo\\Documents\\Workspaces\\Visual Studio\\Source\\repos\\MoneySaver\\Source\\Source\\Horeb.MoneySaver.API\\Horeb.MoneySaver.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Ricardo\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "C:\\Users\\Ricardo\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",

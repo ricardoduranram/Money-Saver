@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Ricardo\\Documents\\Workspaces\\Visual Studio\\Source\\repos\\Money-Saver\\Source\\Source\\Horeb.MoneySaver.Infrastructure.Data\\Horeb.MoneySaver.Infrastructure.Data.csproj",
+      "projectUniqueName": "C:\\Users\\Ricardo\\Documents\\Workspaces\\Visual Studio\\Source\\repos\\MoneySaver\\Source\\Source\\Horeb.MoneySaver.Infrastructure.Data\\Horeb.MoneySaver.Infrastructure.Data.csproj",
       "projectName": "Horeb.MoneySaver.Infrastructure.Data",
-      "projectPath": "C:\\Users\\Ricardo\\Documents\\Workspaces\\Visual Studio\\Source\\repos\\Money-Saver\\Source\\Source\\Horeb.MoneySaver.Infrastructure.Data\\Horeb.MoneySaver.Infrastructure.Data.csproj",
+      "projectPath": "C:\\Users\\Ricardo\\Documents\\Workspaces\\Visual Studio\\Source\\repos\\MoneySaver\\Source\\Source\\Horeb.MoneySaver.Infrastructure.Data\\Horeb.MoneySaver.Infrastructure.Data.csproj",
       "packagesPath": "C:\\Users\\Ricardo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Ricardo\\Documents\\Workspaces\\Visual Studio\\Source\\repos\\Money-Saver\\Source\\Source\\Horeb.MoneySaver.Infrastructure.Data\\obj\\",
+      "outputPath": "C:\\Users\\Ricardo\\Documents\\Workspaces\\Visual Studio\\Source\\repos\\MoneySaver\\Source\\Source\\Horeb.MoneySaver.Infrastructure.Data\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Ricardo\\AppData\\Roaming\\NuGet\\NuGet.Config",
