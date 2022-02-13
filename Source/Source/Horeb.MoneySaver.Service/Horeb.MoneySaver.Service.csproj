@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Horeb.MoneySaver.Domain\Horeb.MoneySaver.Domain.csproj" />
+    <ProjectReference Include="..\Horeb.MoneySaver.Infrastructure.Common\Horeb.MoneySaver.Infrastructure.Common.csproj" />
+    <ProjectReference Include="..\Horeb.MoneySaver.Persistency\Horeb.MoneySaver.Persistency.csproj" />
+  </ItemGroup>
+
+</Project>

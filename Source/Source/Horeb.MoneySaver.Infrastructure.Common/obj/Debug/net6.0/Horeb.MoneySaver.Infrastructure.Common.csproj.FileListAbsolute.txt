@@ -1,0 +1,12 @@
+C:\Users\Ricardo\Documents\Workspaces\Visual Studio\Source\repos\Money-Saver\Source\Source\Horeb.MoneySaver.Infrastructure.Common\bin\Debug\net6.0\Horeb.MoneySaver.Infrastructure.Common.deps.json
+C:\Users\Ricardo\Documents\Workspaces\Visual Studio\Source\repos\Money-Saver\Source\Source\Horeb.MoneySaver.Infrastructure.Common\bin\Debug\net6.0\Horeb.MoneySaver.Infrastructure.Common.dll
+C:\Users\Ricardo\Documents\Workspaces\Visual Studio\Source\repos\Money-Saver\Source\Source\Horeb.MoneySaver.Infrastructure.Common\bin\Debug\net6.0\ref\Horeb.MoneySaver.Infrastructure.Common.dll
+C:\Users\Ricardo\Documents\Workspaces\Visual Studio\Source\repos\Money-Saver\Source\Source\Horeb.MoneySaver.Infrastructure.Common\bin\Debug\net6.0\Horeb.MoneySaver.Infrastructure.Common.pdb
+C:\Users\Ricardo\Documents\Workspaces\Visual Studio\Source\repos\Money-Saver\Source\Source\Horeb.MoneySaver.Infrastructure.Common\obj\Debug\net6.0\Horeb.MoneySaver.Infrastructure.Common.csproj.AssemblyReference.cache
+C:\Users\Ricardo\Documents\Workspaces\Visual Studio\Source\repos\Money-Saver\Source\Source\Horeb.MoneySaver.Infrastructure.Common\obj\Debug\net6.0\Horeb.MoneySaver.Infrastructure.Common.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ricardo\Documents\Workspaces\Visual Studio\Source\repos\Money-Saver\Source\Source\Horeb.MoneySaver.Infrastructure.Common\obj\Debug\net6.0\Horeb.MoneySaver.Infrastructure.Common.AssemblyInfoInputs.cache
+C:\Users\Ricardo\Documents\Workspaces\Visual Studio\Source\repos\Money-Saver\Source\Source\Horeb.MoneySaver.Infrastructure.Common\obj\Debug\net6.0\Horeb.MoneySaver.Infrastructure.Common.AssemblyInfo.cs
+C:\Users\Ricardo\Documents\Workspaces\Visual Studio\Source\repos\Money-Saver\Source\Source\Horeb.MoneySaver.Infrastructure.Common\obj\Debug\net6.0\Horeb.MoneySaver.Infrastructure.Common.csproj.CoreCompileInputs.cache
+C:\Users\Ricardo\Documents\Workspaces\Visual Studio\Source\repos\Money-Saver\Source\Source\Horeb.MoneySaver.Infrastructure.Common\obj\Debug\net6.0\Horeb.MoneySaver.Infrastructure.Common.dll
+C:\Users\Ricardo\Documents\Workspaces\Visual Studio\Source\repos\Money-Saver\Source\Source\Horeb.MoneySaver.Infrastructure.Common\obj\Debug\net6.0\ref\Horeb.MoneySaver.Infrastructure.Common.dll
+C:\Users\Ricardo\Documents\Workspaces\Visual Studio\Source\repos\Money-Saver\Source\Source\Horeb.MoneySaver.Infrastructure.Common\obj\Debug\net6.0\Horeb.MoneySaver.Infrastructure.Common.pdb
