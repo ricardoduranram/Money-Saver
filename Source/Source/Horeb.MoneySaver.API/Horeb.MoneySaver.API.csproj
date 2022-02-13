@@ -11,14 +11,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Horeb.MoneySaver.Domain\Horeb.MoneySaver.Domain.csproj" />
     <ProjectReference Include="..\Horeb.MoneySaver.Infrastructure.Common\Horeb.MoneySaver.Infrastructure.Common.csproj" />
     <ProjectReference Include="..\Horeb.MoneySaver.Infrastructure.Data\Horeb.MoneySaver.Infrastructure.Data.csproj" />
     <ProjectReference Include="..\Horeb.MoneySaver.Service\Horeb.MoneySaver.Service.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\" />
   </ItemGroup>
 
 </Project>
