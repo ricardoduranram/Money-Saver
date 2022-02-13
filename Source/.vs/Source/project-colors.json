@@ -1,0 +1,31 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "e5bc62c3-a891-458d-91e1-be20f76c4d50": {
+      "ProjectGuid": "e5bc62c3-a891-458d-91e1-be20f76c4d50",
+      "DisplayName": "Horeb.MoneySaver.API",
+      "ColorIndex": 0
+    },
+    "a7e9a775-7cd5-408f-8e3e-6c2bac734e07": {
+      "ProjectGuid": "a7e9a775-7cd5-408f-8e3e-6c2bac734e07",
+      "DisplayName": "Horeb.MoneySaver.Service",
+      "ColorIndex": 1
+    },
+    "e4661b6a-99ed-47da-98a2-1f4c6caa152b": {
+      "ProjectGuid": "e4661b6a-99ed-47da-98a2-1f4c6caa152b",
+      "DisplayName": "Horeb.MoneySaver.Domain",
+      "ColorIndex": 2
+    },
+    "ddb842bf-66f4-4918-95f3-d33a90ddca2d": {
+      "ProjectGuid": "ddb842bf-66f4-4918-95f3-d33a90ddca2d",
+      "DisplayName": "Horeb.MoneySaver.Infrastructure.Common",
+      "ColorIndex": 3
+    },
+    "9c72b14e-f4ad-4f59-8dd3-69ab215521b8": {
+      "ProjectGuid": "9c72b14e-f4ad-4f59-8dd3-69ab215521b8",
+      "DisplayName": "Horeb.MoneySaver.Persistency",
+      "ColorIndex": 4
+    }
+  },
+  "NextColorIndex": 5
+}

@@ -1,0 +1,17 @@
+C:\Users\Ricardo\Documents\Workspaces\Visual Studio\Source\repos\Money-Saver\Source\Source\Horeb.MoneySaver.Persistency\bin\Debug\net6.0\Horeb.MoneySaver.Persistency.deps.json
+C:\Users\Ricardo\Documents\Workspaces\Visual Studio\Source\repos\Money-Saver\Source\Source\Horeb.MoneySaver.Persistency\bin\Debug\net6.0\Horeb.MoneySaver.Persistency.dll
+C:\Users\Ricardo\Documents\Workspaces\Visual Studio\Source\repos\Money-Saver\Source\Source\Horeb.MoneySaver.Persistency\bin\Debug\net6.0\ref\Horeb.MoneySaver.Persistency.dll
+C:\Users\Ricardo\Documents\Workspaces\Visual Studio\Source\repos\Money-Saver\Source\Source\Horeb.MoneySaver.Persistency\bin\Debug\net6.0\Horeb.MoneySaver.Persistency.pdb
+C:\Users\Ricardo\Documents\Workspaces\Visual Studio\Source\repos\Money-Saver\Source\Source\Horeb.MoneySaver.Persistency\bin\Debug\net6.0\Horeb.MoneySaver.Domain.dll
+C:\Users\Ricardo\Documents\Workspaces\Visual Studio\Source\repos\Money-Saver\Source\Source\Horeb.MoneySaver.Persistency\bin\Debug\net6.0\Horeb.MoneySaver.Infrastructure.Common.dll
+C:\Users\Ricardo\Documents\Workspaces\Visual Studio\Source\repos\Money-Saver\Source\Source\Horeb.MoneySaver.Persistency\bin\Debug\net6.0\Horeb.MoneySaver.Domain.pdb
+C:\Users\Ricardo\Documents\Workspaces\Visual Studio\Source\repos\Money-Saver\Source\Source\Horeb.MoneySaver.Persistency\bin\Debug\net6.0\Horeb.MoneySaver.Infrastructure.Common.pdb
+C:\Users\Ricardo\Documents\Workspaces\Visual Studio\Source\repos\Money-Saver\Source\Source\Horeb.MoneySaver.Persistency\obj\Debug\net6.0\Horeb.MoneySaver.Persistency.csproj.AssemblyReference.cache
+C:\Users\Ricardo\Documents\Workspaces\Visual Studio\Source\repos\Money-Saver\Source\Source\Horeb.MoneySaver.Persistency\obj\Debug\net6.0\Horeb.MoneySaver.Persistency.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ricardo\Documents\Workspaces\Visual Studio\Source\repos\Money-Saver\Source\Source\Horeb.MoneySaver.Persistency\obj\Debug\net6.0\Horeb.MoneySaver.Persistency.AssemblyInfoInputs.cache
+C:\Users\Ricardo\Documents\Workspaces\Visual Studio\Source\repos\Money-Saver\Source\Source\Horeb.MoneySaver.Persistency\obj\Debug\net6.0\Horeb.MoneySaver.Persistency.AssemblyInfo.cs
+C:\Users\Ricardo\Documents\Workspaces\Visual Studio\Source\repos\Money-Saver\Source\Source\Horeb.MoneySaver.Persistency\obj\Debug\net6.0\Horeb.MoneySaver.Persistency.csproj.CoreCompileInputs.cache
+C:\Users\Ricardo\Documents\Workspaces\Visual Studio\Source\repos\Money-Saver\Source\Source\Horeb.MoneySaver.Persistency\obj\Debug\net6.0\Horeb.MoneySaver.Persistency.csproj.CopyComplete
+C:\Users\Ricardo\Documents\Workspaces\Visual Studio\Source\repos\Money-Saver\Source\Source\Horeb.MoneySaver.Persistency\obj\Debug\net6.0\Horeb.MoneySaver.Persistency.dll
+C:\Users\Ricardo\Documents\Workspaces\Visual Studio\Source\repos\Money-Saver\Source\Source\Horeb.MoneySaver.Persistency\obj\Debug\net6.0\ref\Horeb.MoneySaver.Persistency.dll
+C:\Users\Ricardo\Documents\Workspaces\Visual Studio\Source\repos\Money-Saver\Source\Source\Horeb.MoneySaver.Persistency\obj\Debug\net6.0\Horeb.MoneySaver.Persistency.pdb
