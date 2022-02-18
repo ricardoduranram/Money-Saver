@@ -13,4 +13,8 @@
     <ProjectReference Include="..\Horeb.MoneySaver.Persistency\Horeb.MoneySaver.Persistency.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="BookkeepingModule\" />
+  </ItemGroup>
+
 </Project>
