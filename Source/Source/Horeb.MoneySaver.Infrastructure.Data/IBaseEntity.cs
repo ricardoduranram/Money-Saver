@@ -6,7 +6,7 @@ namespace Horeb.Infrastructure.Data
     /// <summary>
     ///     Provides a base class for your objects which will be persisted to the database.
     /// </summary>
-    public abstract class BaseEntity : Value<long>, IActivityDetails
+    public abstract class BaseEntity : Value<int>, IAuditTrails
     {
         public BaseEntity() {            
             CreatedOn = DateTime.Now;

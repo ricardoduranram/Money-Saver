@@ -7,6 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="11.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Horeb.MoneySaver.Domain\Horeb.MoneySaver.Domain.csproj" />
     <ProjectReference Include="..\Horeb.MoneySaver.Infrastructure.Common\Horeb.MoneySaver.Infrastructure.Common.csproj" />
     <ProjectReference Include="..\Horeb.MoneySaver.Infrastructure.Data\Horeb.MoneySaver.Infrastructure.Data.csproj" />

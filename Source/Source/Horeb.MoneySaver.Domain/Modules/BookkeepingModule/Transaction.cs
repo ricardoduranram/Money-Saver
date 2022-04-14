@@ -14,18 +14,14 @@ namespace Horeb.Domain.TransactionModule
             Description = String.Empty;
         }
         
-        [Required]        
         public Decimal Amount { get; set; }
         
         public string Description { get; set; }
 
-        [Required]
-        public long WalletId { get; set; }
+        public int WalletId { get; set; }
 
-        [Required]
-        public long CategoryId { get; set; }
+        public int CategoryId { get; set; }
 
-        [Required]        
         public DateTime TransactionOn { get; set; }               
     }
 }

@@ -14,8 +14,6 @@ namespace Horeb.Domain.WalletModule
             Name = name;            
         }
 
-        [Required]
-        [StringLength(200)]
         public string Name { get; set; }
 
         public Decimal Amount { get; set; }                            

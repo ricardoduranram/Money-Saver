@@ -9,11 +9,10 @@ namespace Horeb.Service
 {
     public interface IWalletService
     {
-        Wallet FindById(string id);
-        List<Wallet> FindByName(string nameToMatch);
-        List<Wallet> GetAll();
-        Wallet CreateWithName(string walletName);
-        bool Delete(string id);
-        bool Save(Wallet wallet);
+        Task<Wallet> FindByIdAsync(int id);        
+        IEnumerable<Wallet> GetAll();
+        Task<Wallet> CreateWithNameAsync(string walletName);
+        Task<Wallet> SoftDeleteAsync(int id);
+        Task<Wallet> SaveAsync(Wallet wallet);
     }
 }
