@@ -13,7 +13,7 @@ namespace Horeb.Infrastructure.Data
         private V _id;
         private bool _idHasBeenSet = false;
 
-        [Required]
+        [Key]
         public virtual V Id
         {
             get

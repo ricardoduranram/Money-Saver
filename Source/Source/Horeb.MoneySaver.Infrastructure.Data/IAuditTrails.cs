@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Horeb.Infrastructure.Data
 {
-    public interface IActivityDetails
+    public interface IAuditTrails
     {
         DateTime CreatedOn { get; set;}
 
