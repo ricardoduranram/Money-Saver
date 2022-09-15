@@ -1,3 +1,5 @@
+using AutoMapper;
+using Horeb.MoneySaver.API.Services.MappingServices;
 using Horeb.MoneySaver.Persistency;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,6 +16,12 @@ builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+MapperConfiguration config = new (config => {
+    config.AddProfile(new RepositoryMappingProfile());
+    config.AddProfile(new ControllerMappingProfile());
+});
+builder.Services.AddSingleton<IMapper>(config.CreateMapper());
 
 var connectionString = configuration.GetConnectionString("PortalContext");
 builder.Services.AddDbContext<DapDbContext>(options =>
