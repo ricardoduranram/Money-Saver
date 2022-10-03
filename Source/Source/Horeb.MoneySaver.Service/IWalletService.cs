@@ -1,4 +1,5 @@
 ﻿using Horeb.Domain.WalletModule;
+using Horeb.MoneySaver.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,12 +8,8 @@ using System.Threading.Tasks;
 
 namespace Horeb.Service
 {
-    public interface IWalletService
+    public interface IWalletService: IBaseCrudService<Wallet>
     {
-        Task<Wallet> FindByIdAsync(int id);        
-        IEnumerable<Wallet> GetAll();
         Task<Wallet> CreateWithNameAsync(string walletName);
-        Task<Wallet> SoftDeleteAsync(int id);
-        Task<Wallet> SaveAsync(Wallet wallet);
     }
 }

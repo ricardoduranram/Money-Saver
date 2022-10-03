@@ -17,7 +17,10 @@ namespace Horeb.MoneySaver.Persistency.EntityDataModels
         public virtual List<TransactionCategoryModel> TransactionCategories { get; set; } 
             = new List<TransactionCategoryModel>();
 
-        public virtual List<TransactionModel> Transactions { get; set; } 
+        public virtual List<TransactionModel> Transactions { get; set; }
             = new List<TransactionModel>();
+
+        public virtual List<MonthlyBalanceEnquiryModel> BalanceEnquiries { get; set; }
+            = new List<MonthlyBalanceEnquiryModel>();
     }
 }

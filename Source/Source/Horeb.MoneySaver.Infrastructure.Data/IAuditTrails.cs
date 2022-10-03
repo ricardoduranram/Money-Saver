@@ -8,9 +8,9 @@ namespace Horeb.Infrastructure.Data
 {
     public interface IAuditTrails
     {
-        DateTime CreatedOn { get; set;}
+        DateTime UtcCreatedOn { get; set;}
 
-        DateTime LastestUpdateOn { get; set; }
+        DateTime UtcLastestUpdateOn { get; set; }
         bool IsActive { get; set; }
     }
 }

@@ -9,19 +9,17 @@ using System.Threading.Tasks;
 namespace Horeb.Domain.TransactionModule
 {
     public class Transaction : BaseEntity
-    {
-        public Transaction() :base() {
-            Description = String.Empty;
-        }
+    {   
+        public decimal Amount { get; set; }
         
-        public Decimal Amount { get; set; }
-        
-        public string Description { get; set; }
+        public string Description { get; set; } = String.Empty;
 
         public int WalletId { get; set; }
 
         public int CategoryId { get; set; }
 
-        public DateTime TransactionOn { get; set; }               
+        public DateTime UtcOccurredOn { get; set; }
+        
+        public int MonthlyPeriodId { get; set; }
     }
 }

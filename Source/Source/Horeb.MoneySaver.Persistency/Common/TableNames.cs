@@ -11,5 +11,7 @@ namespace Horeb.MoneySaver.Persistency.Common
         internal const string Wallet = "Wallet";
         internal const string Transaction = "Transaction";
         internal const string TrsansactionCategory = "TransactionCategory";
+        internal const string MonthlyPeriod = "MonthlyPeriod";
+        internal const string BalanceEnquiry = "BalanceEnquiry";
     }
 }

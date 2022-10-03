@@ -7,10 +7,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Horeb.MoneySaver.Persistency.EntityDataModels
 {
     [Table(TableNames.Transaction)]
-    public class TransactionModel: BaseEntity
+    public class TransactionModel : BaseEntity
     {
         [Required]
-        public Decimal Amount { get; set; }
+        public decimal Amount { get; set; }
 
         public string Description { get; set; } = String.Empty;
 
@@ -24,9 +24,15 @@ namespace Horeb.MoneySaver.Persistency.EntityDataModels
         [ForeignKey(TableNames.TrsansactionCategory)]
         public long TransactionCategoryId { get; set; }
 
-        public TransactionCategoryModel? TransactionCategory { get; set; }
+        public virtual TransactionCategoryModel? TransactionCategory { get; set; }
 
         [Required]
-        public DateTime TransactionOn { get; set; }
+        [ForeignKey(TableNames.MonthlyPeriod)]
+        public long MonthlyPeriodId { get; set; }
+
+        public virtual MonthlyPeriodModel?  MonthlyPeriod { get; set; }
+
+        [Required]
+        public DateTime UtcOccurredOn { get; set; }
     }
 }

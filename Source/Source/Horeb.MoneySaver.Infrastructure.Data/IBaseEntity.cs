@@ -7,17 +7,12 @@ namespace Horeb.Infrastructure.Data
     ///     Provides a base class for your objects which will be persisted to the database.
     /// </summary>
     public abstract class BaseEntity : Value<int>, IAuditTrails
-    {
-        public BaseEntity() {            
-            CreatedOn = DateTime.Now;
-            LastestUpdateOn = DateTime.Now;
-        }                
+    {           
+        [Required]
+        public DateTime UtcCreatedOn { get; set; } = DateTime.Now.ToUniversalTime();
 
         [Required]
-        public DateTime CreatedOn { get; set; }
-
-        [Required]
-        public DateTime LastestUpdateOn { get; set; }
+        public DateTime UtcLastestUpdateOn { get; set; } = DateTime.Now.ToUniversalTime();
 
         public bool IsActive { get; set; }
     }    
