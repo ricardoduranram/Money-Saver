@@ -13,8 +13,8 @@ namespace Horeb.Domain.FinanceModule
     {
         public Decimal MonthlyEndingBalance { get; set; }
 
-        public long WalletId { get; set; }
+        public int WalletId { get; set; }
 
-        public long MonthlyPeriodId { get; set; }
+        public int MonthlyPeriodId { get; set; }
     }
 }

@@ -14,7 +14,7 @@ namespace Horeb.MoneySaver.Persistency.EntityDataModels
 
         [Required]
         [ForeignKey(TableNames.Wallet)]
-        public long WalletId { get; set; }
+        public int WalletId { get; set; }
 
         public virtual WalletModel? Wallet { get; set; }
 

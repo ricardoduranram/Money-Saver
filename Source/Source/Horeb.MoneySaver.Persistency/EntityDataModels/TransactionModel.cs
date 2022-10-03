@@ -16,19 +16,19 @@ namespace Horeb.MoneySaver.Persistency.EntityDataModels
 
         [Required]
         [ForeignKey(TableNames.Wallet)]
-        public long WalletId { get; set; }
+        public int WalletId { get; set; }
 
         public virtual WalletModel? Wallet { get; set; }
 
         [Required]
         [ForeignKey(TableNames.TrsansactionCategory)]
-        public long TransactionCategoryId { get; set; }
+        public int TransactionCategoryId { get; set; }
 
         public virtual TransactionCategoryModel? TransactionCategory { get; set; }
 
         [Required]
         [ForeignKey(TableNames.MonthlyPeriod)]
-        public long MonthlyPeriodId { get; set; }
+        public int MonthlyPeriodId { get; set; }
 
         public virtual MonthlyPeriodModel?  MonthlyPeriod { get; set; }
 
