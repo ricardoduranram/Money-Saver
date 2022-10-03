@@ -19,5 +19,7 @@ namespace Horeb.MoneySaver.Persistency
         public DbSet<WalletModel> Wallets { get; set; }
         public DbSet<TransactionCategoryModel> TransactionCategories { get; set; }
         public DbSet<TransactionModel> Transactions { get; set; }
+        public DbSet<MonthlyPeriodModel> MonthlyPeriods { get; set; }
+        public DbSet<MonthlyBalanceEnquiryModel> BalanceEnquiries { get; set; }
     }
 }

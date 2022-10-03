@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -11,10 +11,6 @@
     <ProjectReference Include="..\Horeb.MoneySaver.Infrastructure.Common\Horeb.MoneySaver.Infrastructure.Common.csproj" />
     <ProjectReference Include="..\Horeb.MoneySaver.Infrastructure.Data\Horeb.MoneySaver.Infrastructure.Data.csproj" />
     <ProjectReference Include="..\Horeb.MoneySaver.Persistency\Horeb.MoneySaver.Persistency.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="BookkeepingModule\" />
   </ItemGroup>
 
   <ItemGroup>

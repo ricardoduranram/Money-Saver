@@ -13,5 +13,14 @@ namespace Horeb.Domain.TransactionModule
         public int WalletId { get; set; }
         
         public bool IsIncome { get; set; }
+
+        public decimal ConvertAmmountToExpenseOrIncome(decimal ammount)
+        {
+            if (ammount < 0) {
+                return ammount * -1;
+            }
+
+            return IsIncome ? ammount : ammount * -1;
+        }
     }
 }
