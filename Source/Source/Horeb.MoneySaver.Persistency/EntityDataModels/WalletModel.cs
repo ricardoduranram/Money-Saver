@@ -12,15 +12,15 @@ namespace Horeb.MoneySaver.Persistency.EntityDataModels
         [StringLength(200)]
         public string Name { get; set; } = string.Empty;
 
-        public Decimal Amount { get; set; }
+        public Decimal Balance { get; set; }
 
-        public virtual List<TransactionCategoryModel> TransactionCategories { get; set; } 
-            = new List<TransactionCategoryModel>();
+        public virtual List<CategoryModel> Categories { get; set; } 
+            = new List<CategoryModel>();
 
         public virtual List<TransactionModel> Transactions { get; set; }
             = new List<TransactionModel>();
 
-        public virtual List<MonthlyBalanceEnquiryModel> BalanceEnquiries { get; set; }
-            = new List<MonthlyBalanceEnquiryModel>();
+        public virtual List<BalanceStatementModel> BalanceStatements { get; set; }
+            = new List<BalanceStatementModel>();
     }
 }

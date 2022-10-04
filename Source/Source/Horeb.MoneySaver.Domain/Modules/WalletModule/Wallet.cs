@@ -16,6 +16,6 @@ namespace Horeb.Domain.WalletModule
 
         public string Name { get; set; }
 
-        public Decimal Amount { get; set; }                            
+        public Decimal Balance { get; set; }                            
     }
 }

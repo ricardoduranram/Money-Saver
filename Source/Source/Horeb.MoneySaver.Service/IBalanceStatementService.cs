@@ -2,14 +2,14 @@
 
 namespace Horeb.MoneySaver.Service
 {
-    public interface IMonthlyBalanceEnquiryService: IBaseCrudService<MonthlyBalanceEnquiry>
+    public interface IBalanceStatementService: IBaseCrudService<BalanceStatement>
     {
-        Task<MonthlyBalanceEnquiry?> GetByMonthlyPeriodIdAndWalletId(
+        Task<BalanceStatement?> GetByMonthlyPeriodIdAndWalletId(
             int monthlyPeriodId,
             int walletId);
 
         //The Range is inclusive
-        Task<IEnumerable<MonthlyBalanceEnquiry>> GetByDateRangeForWalletId(
+        Task<IEnumerable<BalanceStatement>> GetByDateRangeForWalletId(
             (DateTime Start, DateTime End) dateRange,
             int walletId);
 

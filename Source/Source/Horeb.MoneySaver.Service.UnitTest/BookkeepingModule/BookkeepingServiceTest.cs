@@ -18,16 +18,16 @@ namespace Horeb.MoneySaver.Service.UnitTest.BookkeepingModule
         private readonly IBookkeepingService _bookkeepingService;
         private readonly Mock<IRepository<Transaction, TransactionModel>> _repositoryMock = new ();
         private readonly Mock<IWalletService> _walletServiceMock = new ();
-        private readonly Mock<IMonthlyBalanceEnquiryService> _balanceStatementServiceMock = new ();
-        private readonly Mock<ITransactionCategoryService> _categoryServiceMock = new ();
-        private readonly Mock<IMonthlyPeriodService> _periodServiceMock = new ();
+        private readonly Mock<IBalanceStatementService> _balanceStatementServiceMock = new ();
+        private readonly Mock<ICategoryService> _categoryServiceMock = new ();
+        private readonly Mock<IPeriodService> _periodServiceMock = new ();
 
         public BookkeepingServiceTest() {
             _walletServiceMock
                 .Setup(walletS => walletS.Update(It.IsAny<Wallet>()))
                 .Returns<Wallet>(result => result);
 
-            MonthlyPeriod fakePeriod = GeneratePeriod();
+            Period fakePeriod = GeneratePeriod();
             _periodServiceMock
                 .Setup(periodS => periodS.GetById(fakePeriod.Id))
                 .Returns(fakePeriod);
@@ -51,7 +51,7 @@ namespace Horeb.MoneySaver.Service.UnitTest.BookkeepingModule
 
             _bookkeepingService.RecordTransactionAsync(fakeTransaction);
             _walletServiceMock.Verify(
-                walletS => walletS.Update(It.Is<Wallet>(w => w.Amount == 700)));
+                walletS => walletS.Update(It.Is<Wallet>(w => w.Balance == 700)));
         }
 
         [Fact(DisplayName = "Ability to debit Wallet Balance with recorded Transaction's amount")]
@@ -64,18 +64,18 @@ namespace Horeb.MoneySaver.Service.UnitTest.BookkeepingModule
 
             _bookkeepingService.RecordTransactionAsync(fakeTransaction);
             _walletServiceMock.Verify(
-                walletS => walletS.Update(It.Is<Wallet>(w => w.Amount == 1500)));
+                walletS => walletS.Update(It.Is<Wallet>(w => w.Balance == 1500)));
         }
 
         private void SetupCreditMockups()
         {
-            TransactionCategory fakeCategory = GenerateCreditCategory();
+            Category fakeCategory = GenerateCreditCategory();
             _categoryServiceMock
                 .Setup(categoryS => categoryS.GetByIdAsync(fakeCategory.Id))
                 .ReturnsAsync(fakeCategory);
 
             Wallet fakeWallet = GenerateWallet();
-            fakeWallet.Amount = 1000;
+            fakeWallet.Balance = 1000;
             _walletServiceMock
                 .Setup(walletS => walletS.GetByIdAsync(fakeWallet.Id))
                 .ReturnsAsync(fakeWallet);
@@ -83,13 +83,13 @@ namespace Horeb.MoneySaver.Service.UnitTest.BookkeepingModule
 
         private void SetupDebitMockups()
         {
-            TransactionCategory fakeCategory = GenerateDebitCategory();
+            Category fakeCategory = GenerateDebitCategory();
             _categoryServiceMock
                 .Setup(categoryS => categoryS.GetByIdAsync(fakeCategory.Id))
                 .ReturnsAsync(fakeCategory);
 
             Wallet fakeWallet = GenerateWallet();
-            fakeWallet.Amount = 1000;
+            fakeWallet.Balance = 1000;
             _walletServiceMock
                 .Setup(walletS => walletS.GetByIdAsync(fakeWallet.Id))
                 .ReturnsAsync(fakeWallet);
@@ -98,34 +98,34 @@ namespace Horeb.MoneySaver.Service.UnitTest.BookkeepingModule
         private Wallet GenerateWallet() {
             return new Wallet("Ricardo's Wallet") {
                 Id = 1,
-                Amount = 1000
+                Balance = 1000
             };
         }
 
-        private MonthlyPeriod GeneratePeriod() {
-            return new MonthlyPeriod()
+        private Period GeneratePeriod() {
+            return new Period()
             {
                 Id = 10,
-                StartDateUtc = new DateTime(2022, 9, 1),
-                EndDateUtc = new DateTime(2022, 9, 30)
+                UtcStart = new DateTime(2022, 9, 1),
+                UtcEnd = new DateTime(2022, 9, 30)
             };
         }
 
-        private TransactionCategory GenerateCreditCategory() {
-            return new TransactionCategory("Electronics") {
+        private Category GenerateCreditCategory() {
+            return new Category("Electronics") {
                 Id = 20,
                 WalletId = 1,
-                IsIncome = false
+                Type = CategoryType.Expense
             };
 
         }
 
-        private TransactionCategory GenerateDebitCategory() {
-            return new TransactionCategory("Salary")
+        private Category GenerateDebitCategory() {
+            return new Category("Salary")
             {
                 Id = 21,
                 WalletId = 1,
-                IsIncome = true
+                Type = CategoryType.Income
             };
         }
 
@@ -133,7 +133,7 @@ namespace Horeb.MoneySaver.Service.UnitTest.BookkeepingModule
             return new Transaction() {
                 Id = 30,
                 Amount = 300,
-                Description = "Bought Monitor",
+                Note = "Bought Monitor",
                 CategoryId = 20,
                 WalletId = 1,
                 MonthlyPeriodId = 10,
@@ -147,7 +147,7 @@ namespace Horeb.MoneySaver.Service.UnitTest.BookkeepingModule
             {
                 Id = 31,
                 Amount = 500,
-                Description = "Job Paycheck",
+                Note = "Job Paycheck",
                 CategoryId = 21,
                 WalletId = 1,
                 MonthlyPeriodId = 10,
@@ -155,25 +155,25 @@ namespace Horeb.MoneySaver.Service.UnitTest.BookkeepingModule
             };
         }
 
-        private MonthlyBalanceEnquiry GenerateBalanceStatement() {
-            return new MonthlyBalanceEnquiry
+        private BalanceStatement GenerateBalanceStatement() {
+            return new BalanceStatement
             {
                 Id = 40,
-                MonthlyEndingBalance = 200,
-                MonthlyPeriodId = 10,
+                Closing = 200,
+                PeriodId = 10,
                 WalletId = 1
             };
         }
 
-        private List<MonthlyBalanceEnquiry> GenerateBalanceStatementList() {
-            List<MonthlyBalanceEnquiry> balanceStatementList = new ();
+        private List<BalanceStatement> GenerateBalanceStatementList() {
+            List<BalanceStatement> balanceStatementList = new ();
 
             balanceStatementList.Add(GenerateBalanceStatement());
             balanceStatementList.Add(
-                new MonthlyBalanceEnquiry { 
+                new BalanceStatement { 
                     Id = 41,
-                    MonthlyEndingBalance = 250,
-                    MonthlyPeriodId = 10,
+                    Closing = 250,
+                    PeriodId = 10,
                     WalletId = 1,
             });
 

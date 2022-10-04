@@ -26,12 +26,12 @@ namespace Horeb.MoneySaver.Service.UnitTest
             List<Wallet> wallets = new ();
             wallets.Add(
                 new Wallet("Savings") { 
-                    Amount = 500
+                    Balance = 500
                 });
             wallets.Add(
                 new Wallet("Cash")
                 {
-                    Amount = 1000
+                    Balance = 1000
                 });
 
             return wallets;

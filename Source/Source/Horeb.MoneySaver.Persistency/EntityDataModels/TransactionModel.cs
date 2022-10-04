@@ -12,7 +12,7 @@ namespace Horeb.MoneySaver.Persistency.EntityDataModels
         [Required]
         public decimal Amount { get; set; }
 
-        public string Description { get; set; } = String.Empty;
+        public string Note { get; set; } = String.Empty;
 
         [Required]
         [ForeignKey(TableNames.Wallet)]
@@ -21,16 +21,16 @@ namespace Horeb.MoneySaver.Persistency.EntityDataModels
         public virtual WalletModel? Wallet { get; set; }
 
         [Required]
-        [ForeignKey(TableNames.TrsansactionCategory)]
-        public int TransactionCategoryId { get; set; }
+        [ForeignKey(TableNames.Category)]
+        public int CategoryId { get; set; }
 
-        public virtual TransactionCategoryModel? TransactionCategory { get; set; }
+        public virtual CategoryModel? Category { get; set; }
 
         [Required]
-        [ForeignKey(TableNames.MonthlyPeriod)]
-        public int MonthlyPeriodId { get; set; }
+        [ForeignKey(TableNames.Period)]
+        public int PeriodId { get; set; }
 
-        public virtual MonthlyPeriodModel?  MonthlyPeriod { get; set; }
+        public virtual PeriodModel?  Period { get; set; }
 
         [Required]
         public DateTime UtcOccurredOn { get; set; }

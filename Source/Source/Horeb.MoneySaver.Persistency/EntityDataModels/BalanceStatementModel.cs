@@ -5,10 +5,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Horeb.MoneySaver.Persistency.EntityDataModels
 {
-    [Table(TableNames.BalanceEnquiry)]
-    public class MonthlyBalanceEnquiryModel: BaseEntity
+    [Table(TableNames.BalanceStatement)]
+    public class BalanceStatementModel: BaseEntity
     {
-        public Decimal MonthlyEndingBalance { get; set; }
+        public Decimal Opening { get; set; }
+        public Decimal Closing { get; set; }
 
         [Required]
         [ForeignKey(TableNames.Wallet)]
@@ -17,9 +18,9 @@ namespace Horeb.MoneySaver.Persistency.EntityDataModels
         public virtual WalletModel? Wallet { get; set; }
 
         [Required]
-        [ForeignKey(TableNames.MonthlyPeriod)]
-        public int MonthlyPeriodId { get; set;}
+        [ForeignKey(TableNames.Period)]
+        public int PeriodId { get; set;}
 
-        public virtual MonthlyPeriodModel? MonthlyPeriod { get; set; }
+        public virtual PeriodModel? Period { get; set; }
     }
 }

@@ -12,23 +12,23 @@ namespace Horeb.MoneySaver.Service.BookkeepingModule
     {
         private readonly IRepository<Transaction, TransactionModel> _repository;
         private readonly IWalletService _walletService;
-        private readonly IMonthlyBalanceEnquiryService _balanceEnquiryService;
-        private readonly ITransactionCategoryService _transactionCategoryService;
-        private readonly IMonthlyPeriodService _monthlyPeriodService;
+        private readonly IBalanceStatementService _balanceStatementService;
+        private readonly ICategoryService _categoryService;
+        private readonly IPeriodService _periodService;
 
 
         public BookkeepingService(
             IRepository<Transaction, TransactionModel> repository,
             IWalletService walletService,
-            IMonthlyBalanceEnquiryService balanceEnquiryService,
-            ITransactionCategoryService transactionCategoryService,
-            IMonthlyPeriodService monthlyPeriodService)
+            IBalanceStatementService balanceStatementService,
+            ICategoryService categoryService,
+            IPeriodService periodService)
         {
             _repository = repository;
             _walletService = walletService;
-            _balanceEnquiryService = balanceEnquiryService;
-            _transactionCategoryService = transactionCategoryService;
-            _monthlyPeriodService = monthlyPeriodService;
+            _balanceStatementService = balanceStatementService;
+            _categoryService = categoryService;
+            _periodService = periodService;
         }
 
         //Currently is not the booking service responsibility to create the balance statement or the period
@@ -37,22 +37,22 @@ namespace Horeb.MoneySaver.Service.BookkeepingModule
             CheckTransactionIntegrity(transaction);
 
             Task<Wallet> getWalletTask = _walletService.GetByIdAsync(transaction.WalletId);
-            Task<TransactionCategory> getTransactionCategoryTask =
-                _transactionCategoryService.GetByIdAsync(transaction.CategoryId);
+            Task<Category> getTransactionCategoryTask =
+                _categoryService.GetByIdAsync(transaction.CategoryId);
             Task<Transaction> createTask = _repository.CreateAsync(transaction);
                         
-            TransactionCategory transactionCategory = await getTransactionCategoryTask;
+            Category transactionCategory = await getTransactionCategoryTask;
             decimal adjustment = transactionCategory.ConvertAmmountToExpenseOrIncome(transaction.Amount);
 
             Task balancesAdjustmentTask =
-                _balanceEnquiryService
+                _balanceStatementService
                     .AdjustBalancesFromDateRange(
                     (transaction.UtcOccurredOn, DateTime.UtcNow),
                     transaction.WalletId,
                     adjustment);
             
             Wallet wallet = await getWalletTask;
-            wallet.Amount += adjustment;
+            wallet.Balance += adjustment;
            
             _walletService.Update(wallet);
             await createTask;
@@ -68,8 +68,8 @@ namespace Horeb.MoneySaver.Service.BookkeepingModule
                 throw new ArgumentOutOfRangeException($"Amount out of range {transaction.Amount}"); 
             }
 
-            MonthlyPeriod period =
-                _monthlyPeriodService.GetById(transaction.MonthlyPeriodId);
+            Period period =
+                _periodService.GetById(transaction.MonthlyPeriodId);
 
             if (!period.IsDateWithin(transaction.UtcOccurredOn))
             {

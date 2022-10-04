@@ -15,12 +15,12 @@ namespace Horeb.MoneySaver.API.Services.MappingServices
             CreateMap<WalletModel, Wallet>();
             CreateMap<Transaction, TransactionModel>();
             CreateMap<TransactionModel, Transaction>();
-            CreateMap<TransactionCategory, TransactionCategoryModel>();
-            CreateMap<TransactionCategoryModel, TransactionCategory>();
-            CreateMap<MonthlyPeriod, MonthlyPeriodModel>();
-            CreateMap<MonthlyPeriodModel, MonthlyPeriod>();
-            CreateMap<MonthlyBalanceEnquiry, MonthlyBalanceEnquiryModel>();
-            CreateMap<MonthlyBalanceEnquiryModel, MonthlyBalanceEnquiry>();
+            CreateMap<Category, CategoryModel>();
+            CreateMap<CategoryModel, Category>();
+            CreateMap<Period, PeriodModel>();
+            CreateMap<PeriodModel, Period>();
+            CreateMap<BalanceStatement, BalanceStatementModel>();
+            CreateMap<BalanceStatementModel, BalanceStatement>();
 
         }
     }

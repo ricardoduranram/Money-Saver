@@ -2,9 +2,9 @@
 
 namespace Horeb.Domain.TransactionModule
 {
-    public class TransactionCategory : BaseEntity
+    public class Category : BaseEntity
     {
-        public TransactionCategory(string name) : base() {            
+        public Category(string name) : base() {            
             Name = name;
         }
 
@@ -12,7 +12,7 @@ namespace Horeb.Domain.TransactionModule
         
         public int WalletId { get; set; }
         
-        public bool IsIncome { get; set; }
+        public CategoryType Type { get; set; }
 
         public decimal ConvertAmmountToExpenseOrIncome(decimal ammount)
         {
@@ -20,7 +20,13 @@ namespace Horeb.Domain.TransactionModule
                 return ammount * -1;
             }
 
-            return IsIncome ? ammount : ammount * -1;
+            return Type == CategoryType.Expense ? ammount * -1 : ammount;
         }
+    }
+
+    public enum CategoryType
+    {
+        Income = 1,
+        Expense = 2,
     }
 }

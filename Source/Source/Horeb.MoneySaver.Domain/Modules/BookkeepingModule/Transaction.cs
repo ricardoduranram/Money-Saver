@@ -12,7 +12,7 @@ namespace Horeb.Domain.TransactionModule
     {   
         public decimal Amount { get; set; }
         
-        public string Description { get; set; } = String.Empty;
+        public string Note { get; set; } = String.Empty;
 
         public int WalletId { get; set; }
 
