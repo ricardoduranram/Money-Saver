@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace Horeb.MoneySaver.Domain.Modules.BookkeepingModule
 {
-    public class MonthlyPeriod: BaseEntity
+    public class Period: BaseEntity
     {
-        public DateTime StartDateUtc { get; set; }
+        public DateTime UtcStart { get; set; }
 
-        public DateTime EndDateUtc { get; set; }
+        public DateTime UtcEnd { get; set; }
 
         public bool IsDateWithin(DateTime date)
         {
-            return date >= StartDateUtc && date.ToUniversalTime() <= EndDateUtc;
+            return date >= UtcStart && date.ToUniversalTime() <= UtcEnd;
         }
     }
 }

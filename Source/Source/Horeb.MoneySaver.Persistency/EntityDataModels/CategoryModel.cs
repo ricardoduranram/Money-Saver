@@ -1,12 +1,13 @@
-﻿using Horeb.Infrastructure.Data;
+﻿using Horeb.Domain.TransactionModule;
+using Horeb.Infrastructure.Data;
 using Horeb.MoneySaver.Persistency.Common;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Horeb.MoneySaver.Persistency.EntityDataModels
 {
-    [Table(TableNames.TrsansactionCategory)]
-    public class TransactionCategoryModel: BaseEntity
+    [Table(TableNames.Category)]
+    public class CategoryModel: BaseEntity
     {
         [Required]
         [StringLength(200)]
@@ -18,6 +19,6 @@ namespace Horeb.MoneySaver.Persistency.EntityDataModels
 
         public virtual WalletModel? Wallet { get; set; }
 
-        public bool IsIncome { get; set; }
+        public CategoryType Type { get; set; }
     }
 }

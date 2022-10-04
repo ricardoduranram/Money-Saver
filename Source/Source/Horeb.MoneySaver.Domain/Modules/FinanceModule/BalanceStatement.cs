@@ -9,12 +9,14 @@ using System.Threading.Tasks;
 
 namespace Horeb.Domain.FinanceModule
 {
-    public class MonthlyBalanceEnquiry: BaseEntity
+    public class BalanceStatement: BaseEntity
     {
-        public Decimal MonthlyEndingBalance { get; set; }
+        public Decimal Opening { get; set; }
+
+        public Decimal Closing { get; set; }
+
+        public int PeriodId { get; set; }
 
         public int WalletId { get; set; }
-
-        public int MonthlyPeriodId { get; set; }
     }
 }

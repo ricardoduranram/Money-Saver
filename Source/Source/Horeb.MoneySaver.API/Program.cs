@@ -27,9 +27,9 @@ MapperConfiguration config = new (config => {
 });
 builder.Services.AddSingleton<IMapper>(config.CreateMapper());
 builder.Services.AddTransient<IBookkeepingService, BookkeepingService>();
-builder.Services.AddTransient<IMonthlyBalanceEnquiryService, MonthlyBalanceEnquiryService>();
-builder.Services.AddTransient<IMonthlyPeriodService, MonthlyPeriodService>();
-builder.Services.AddTransient<ITransactionCategoryService, TransactionCategoryService>();
+builder.Services.AddTransient<IBalanceStatementService, BalanceStatementService>();
+builder.Services.AddTransient<IPeriodService, PeriodService>();
+builder.Services.AddTransient<ICategoryService, CategoryService>();
 builder.Services.AddTransient<IWalletService, WalletService>();
 
 var connectionString = configuration.GetConnectionString("PortalContext");

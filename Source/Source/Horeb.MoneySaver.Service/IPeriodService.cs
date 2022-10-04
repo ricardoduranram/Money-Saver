@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Horeb.MoneySaver.Service
 {
-    public interface IMonthlyPeriodService: IBaseCrudService<MonthlyPeriod>
+    public interface IPeriodService: IBaseCrudService<Period>
     {
         //Range is inclusive
-        Task<IEnumerable<MonthlyPeriod>> GetByDateRange((DateTime Start, DateTime End) dateRange);
+        Task<IEnumerable<Period>> GetByDateRange((DateTime Start, DateTime End) dateRange);
     }
 }

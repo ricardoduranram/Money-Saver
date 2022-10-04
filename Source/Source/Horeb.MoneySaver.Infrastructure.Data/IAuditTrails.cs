@@ -11,6 +11,6 @@ namespace Horeb.Infrastructure.Data
         DateTime UtcCreatedOn { get; set;}
 
         DateTime UtcLastestUpdateOn { get; set; }
-        bool IsActive { get; set; }
+        bool IsActive();
     }
 }

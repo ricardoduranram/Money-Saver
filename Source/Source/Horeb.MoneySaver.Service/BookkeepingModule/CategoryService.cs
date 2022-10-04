@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace Horeb.MoneySaver.Service.BookkeepingModule
 {
-    public class TransactionCategoryService: BaseCrudService<TransactionCategory, TransactionCategoryModel>, ITransactionCategoryService
+    public class CategoryService: BaseCrudService<Category, CategoryModel>, ICategoryService
     {
-        private readonly IRepository<TransactionCategory, TransactionCategoryModel> _repository;
+        private readonly IRepository<Category, CategoryModel> _repository;
 
-        public TransactionCategoryService(IRepository<TransactionCategory, TransactionCategoryModel> repository)
+        public CategoryService(IRepository<Category, CategoryModel> repository)
             : base(repository)
         {
             _repository = repository;
