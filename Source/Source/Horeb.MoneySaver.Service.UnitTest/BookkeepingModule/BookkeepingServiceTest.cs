@@ -25,12 +25,12 @@ namespace Horeb.MoneySaver.Service.UnitTest.BookkeepingModule
         public BookkeepingServiceTest() {
             _walletServiceMock
                 .Setup(walletS => walletS.Update(It.IsAny<Wallet>()))
-                .Returns<Wallet>(result => result);
+                .Returns<Wallet>(result => result);            
 
-            Period fakePeriod = GeneratePeriod();
+            MonthlyPeriod fakePeriod = GeneratePeriod();
             _periodServiceMock
-                .Setup(periodS => periodS.GetById(fakePeriod.Id))
-                .Returns(fakePeriod);
+                .Setup(periodS => periodS.GetByDateAsync(It.IsAny<DateTime>()))
+                .ReturnsAsync(fakePeriod);
 
             _bookkeepingService = new BookkeepingService(
             _repositoryMock.Object,
@@ -69,7 +69,7 @@ namespace Horeb.MoneySaver.Service.UnitTest.BookkeepingModule
 
         private void SetupCreditMockups()
         {
-            Category fakeCategory = GenerateCreditCategory();
+            TransactionCategory fakeCategory = GenerateCreditCategory();
             _categoryServiceMock
                 .Setup(categoryS => categoryS.GetByIdAsync(fakeCategory.Id))
                 .ReturnsAsync(fakeCategory);
@@ -83,7 +83,7 @@ namespace Horeb.MoneySaver.Service.UnitTest.BookkeepingModule
 
         private void SetupDebitMockups()
         {
-            Category fakeCategory = GenerateDebitCategory();
+            TransactionCategory fakeCategory = GenerateDebitCategory();
             _categoryServiceMock
                 .Setup(categoryS => categoryS.GetByIdAsync(fakeCategory.Id))
                 .ReturnsAsync(fakeCategory);
@@ -102,17 +102,16 @@ namespace Horeb.MoneySaver.Service.UnitTest.BookkeepingModule
             };
         }
 
-        private Period GeneratePeriod() {
-            return new Period()
-            {
-                Id = 10,
+        private MonthlyPeriod GeneratePeriod() {
+            return new MonthlyPeriod(new DateTime(2022, 9, 1, 0, 0, 0, DateTimeKind.Utc))
+            {                
                 UtcStart = new DateTime(2022, 9, 1),
-                UtcEnd = new DateTime(2022, 9, 30)
+                IterationTimeId = 10
             };
         }
 
-        private Category GenerateCreditCategory() {
-            return new Category("Electronics") {
+        private TransactionCategory GenerateCreditCategory() {
+            return new TransactionCategory("Electronics") {
                 Id = 20,
                 WalletId = 1,
                 Type = CategoryType.Expense
@@ -120,8 +119,8 @@ namespace Horeb.MoneySaver.Service.UnitTest.BookkeepingModule
 
         }
 
-        private Category GenerateDebitCategory() {
-            return new Category("Salary")
+        private TransactionCategory GenerateDebitCategory() {
+            return new TransactionCategory("Salary")
             {
                 Id = 21,
                 WalletId = 1,
@@ -130,15 +129,16 @@ namespace Horeb.MoneySaver.Service.UnitTest.BookkeepingModule
         }
 
         private Transaction GenerateCreditTransaction() {
-            return new Transaction() {
+            var transaction = new Transaction() {
                 Id = 30,
                 Amount = 300,
-                Note = "Bought Monitor",
-                CategoryId = 20,
-                WalletId = 1,
-                MonthlyPeriodId = 10,
+                Note = "Bought Monitor",                
+                WalletId = 1,                
                 UtcOccurredOn = new DateTime(2022, 9, 15)
             };
+            transaction.Category.Id = 20;
+
+            return transaction;
         }
 
         private Transaction GenerateDebitTransaction()
@@ -148,9 +148,9 @@ namespace Horeb.MoneySaver.Service.UnitTest.BookkeepingModule
                 Id = 31,
                 Amount = 500,
                 Note = "Job Paycheck",
-                CategoryId = 21,
-                WalletId = 1,
-                MonthlyPeriodId = 10,
+                Category = new TransactionCategory("Salary") {
+                    Id = 21, WalletId = 1, Type = CategoryType.Income},
+                WalletId = 1,                
                 UtcOccurredOn = new DateTime(2022, 9, 15)
             };
         }
@@ -160,7 +160,7 @@ namespace Horeb.MoneySaver.Service.UnitTest.BookkeepingModule
             {
                 Id = 40,
                 Closing = 200,
-                PeriodId = 10,
+                IterationTimeId = 10,
                 WalletId = 1
             };
         }
@@ -173,7 +173,7 @@ namespace Horeb.MoneySaver.Service.UnitTest.BookkeepingModule
                 new BalanceStatement { 
                     Id = 41,
                     Closing = 250,
-                    PeriodId = 10,
+                    IterationTimeId = 11,
                     WalletId = 1,
             });
 

@@ -10,8 +10,9 @@ namespace Horeb.MoneySaver.Persistency.Common
     {
         internal const string Wallet = "Wallet";
         internal const string Transaction = "Transaction";
-        internal const string Category = "Category";
-        internal const string Period = "Period";
+        internal const string Category = "TransactionCategory";
+        internal const string IterationTime = "IterationTime";
         internal const string BalanceStatement = "BalanceStatement";
+        internal const string AppSettings = "AppSettings";
     }
 }

@@ -3,6 +3,8 @@ using Horeb.MoneySaver.API.Services.MappingServices;
 using Horeb.MoneySaver.Persistency;
 using Horeb.MoneySaver.Service;
 using Horeb.MoneySaver.Service.BookkeepingModule;
+using Horeb.MoneySaver.Service.PeriodModule;
+using Horeb.MoneySaver.Service.SettingsModule;
 using Horeb.Service;
 using Horeb.Service.WalletModule;
 using Microsoft.EntityFrameworkCore;
@@ -28,9 +30,11 @@ MapperConfiguration config = new (config => {
 builder.Services.AddSingleton<IMapper>(config.CreateMapper());
 builder.Services.AddTransient<IBookkeepingService, BookkeepingService>();
 builder.Services.AddTransient<IBalanceStatementService, BalanceStatementService>();
-builder.Services.AddTransient<IPeriodService, PeriodService>();
-builder.Services.AddTransient<ICategoryService, CategoryService>();
+builder.Services.AddTransient<IPeriodService, MonthlyPeriodService>();
+builder.Services.AddTransient<ICategoryService, TransactionCategoryService>();
 builder.Services.AddTransient<IWalletService, WalletService>();
+builder.Services.AddTransient<IAppSettingsService, AppSettingsService>();
+builder.Services.AddTransient<IIterationTimeService, IterationTimeService>();
 
 var connectionString = configuration.GetConnectionString("PortalContext");
 builder.Services.AddDbContext<DapDbContext>(options =>

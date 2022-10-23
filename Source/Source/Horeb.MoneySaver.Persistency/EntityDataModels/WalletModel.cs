@@ -14,8 +14,8 @@ namespace Horeb.MoneySaver.Persistency.EntityDataModels
 
         public Decimal Balance { get; set; }
 
-        public virtual List<CategoryModel> Categories { get; set; } 
-            = new List<CategoryModel>();
+        public virtual List<TransactionCategoryModel> Categories { get; set; } 
+            = new List<TransactionCategoryModel>();
 
         public virtual List<TransactionModel> Transactions { get; set; }
             = new List<TransactionModel>();

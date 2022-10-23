@@ -6,8 +6,8 @@ using System.Linq.Expressions;
 namespace Horeb.MoneySaver.Persistency
 {
     public class Repository<TEntity, TModel> : IRepository<TEntity, TModel> 
-        where TEntity : class, IValue<int>
-        where TModel : class, IValue<int>
+        where TEntity : class, IIdentity<int>
+        where TModel : class, IIdentity<int>
     {
         private readonly DapDbContext _dbContext;
         private readonly IMapper _mapper;
@@ -18,12 +18,12 @@ namespace Horeb.MoneySaver.Persistency
             _mapper = mapper;
         }
 
-        public bool Exists(int id)
+        public virtual bool Exists(int id)
         {
             return _dbContext.Set<TModel>().Any(model => model.Id == id);
         }
 
-        public IEnumerable<TEntity> GetAll(int pageNumber = 1, int pageSize = int.MaxValue)
+        public virtual IEnumerable<TEntity> GetAll(int pageNumber = 1, int pageSize = int.MaxValue)
         {
             var models = _dbContext.Set<TModel>()
                 .Skip(--pageNumber * pageSize)
@@ -33,7 +33,7 @@ namespace Horeb.MoneySaver.Persistency
             return _mapper.Map<IEnumerable<TEntity>>(models);
         }
 
-        public async Task<TEntity> GetAsync(int id)
+        public virtual async Task<TEntity> GetAsync(int id)
         {
             var model = await _dbContext.Set<TModel>()
                 .FindAsync(id);
@@ -45,7 +45,7 @@ namespace Horeb.MoneySaver.Persistency
             return _mapper.Map<TEntity>(model);
         }
 
-        public TEntity Get(int id)
+        public virtual TEntity Get(int id)
         {
             var model = _dbContext.Set<TModel>()
                 .Find(id);
@@ -57,7 +57,7 @@ namespace Horeb.MoneySaver.Persistency
             return _mapper.Map<TEntity>(model);
         }
 
-        public async Task<TEntity> CreateAsync(TEntity entity)
+        public virtual async Task<TEntity> CreateAsync(TEntity entity)
         {
             var model = _mapper.Map<TModel>(entity);
 
@@ -65,8 +65,17 @@ namespace Horeb.MoneySaver.Persistency
             await _dbContext.SaveChangesAsync();
             return entity;
         }
- 
-        public async Task<TEntity> SoftDeleteAsync(int id)
+
+        public virtual TEntity Create(TEntity entity)
+        {
+            var model = _mapper.Map<TModel>(entity);
+
+            _dbContext.Add(model);
+            _dbContext.SaveChanges();
+            return entity;
+        }
+
+        public virtual async Task<TEntity> SoftDeleteAsync(int id)
         {
             var model = await _dbContext.Set<TModel>()
                 .FindAsync(id);
@@ -79,7 +88,20 @@ namespace Horeb.MoneySaver.Persistency
             return _mapper.Map<TEntity>(model);
         }
 
-        public async Task<TEntity> UpdateAsync(TEntity entity)
+        public virtual TEntity SoftDelete(int id)
+        {
+            var model = _dbContext.Set<TModel>()
+                .Find(id);
+
+            //TODO Implement a true soft delete
+            _dbContext.Set<TModel>()
+                .Remove(model);
+            _dbContext.SaveChanges();
+
+            return _mapper.Map<TEntity>(model);
+        }
+
+        public virtual async Task<TEntity> UpdateAsync(TEntity entity)
         {
             var model = _mapper.Map<TModel>(entity);
 
@@ -89,7 +111,7 @@ namespace Horeb.MoneySaver.Persistency
             return entity;
         }
 
-        public TEntity Update(TEntity entity) {
+        public virtual TEntity Update(TEntity entity) {
             var model = _mapper.Map<TModel>(entity);
 
             _dbContext.Update(model);
@@ -98,14 +120,14 @@ namespace Horeb.MoneySaver.Persistency
             return entity;
         }
 
-        public void UpdateRange(IEnumerable<TEntity> entities)
+        public virtual void UpdateRange(IEnumerable<TEntity> entities)
         {
             var models = _mapper.Map<IEnumerable<TModel>>(entities);
 
             _dbContext.UpdateRange(models);
         }
 
-        public async Task<IEnumerable<TEntity>> GetByExpression(
+        public virtual async Task<IEnumerable<TEntity>> GetByExpression(
             Expression<Func<TModel, bool>> expression)
         {
             IEnumerable<TModel> entities =

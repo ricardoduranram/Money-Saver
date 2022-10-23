@@ -24,13 +24,7 @@ namespace Horeb.MoneySaver.Persistency.EntityDataModels
         [ForeignKey(TableNames.Category)]
         public int CategoryId { get; set; }
 
-        public virtual CategoryModel? Category { get; set; }
-
-        [Required]
-        [ForeignKey(TableNames.Period)]
-        public int PeriodId { get; set; }
-
-        public virtual PeriodModel?  Period { get; set; }
+        public virtual TransactionCategoryModel? Category { get; set; }
 
         [Required]
         public DateTime UtcOccurredOn { get; set; }

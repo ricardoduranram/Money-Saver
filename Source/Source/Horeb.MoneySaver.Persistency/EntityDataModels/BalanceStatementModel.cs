@@ -6,9 +6,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Horeb.MoneySaver.Persistency.EntityDataModels
 {
     [Table(TableNames.BalanceStatement)]
-    public class BalanceStatementModel: BaseEntity
+    public class BalanceStatementModel: Identity<int>
     {
+        [Required]
         public Decimal Opening { get; set; }
+
+        [Required]
         public Decimal Closing { get; set; }
 
         [Required]
@@ -18,9 +21,9 @@ namespace Horeb.MoneySaver.Persistency.EntityDataModels
         public virtual WalletModel? Wallet { get; set; }
 
         [Required]
-        [ForeignKey(TableNames.Period)]
-        public int PeriodId { get; set;}
+        [ForeignKey(TableNames.IterationTime)]
+        public int IterationTimeId { get; set;}
 
-        public virtual PeriodModel? Period { get; set; }
+        public virtual IterationTimeModel? IterationTime { get; set; }
     }
 }

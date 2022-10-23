@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Horeb.MoneySaver.Service.Common
 {
-    public abstract class BaseCrudService<TEntity, TModel> : IBaseCrudService<TEntity> where TEntity : BaseEntity
+    public abstract class BaseCrudService<TEntity, TModel> : IBaseCrudService<TEntity> where TEntity : IIdentity<int>
     {
         private readonly IRepository<TEntity, TModel> _repository;
 
@@ -20,6 +20,11 @@ namespace Horeb.MoneySaver.Service.Common
         public virtual async Task<TEntity> SoftDeleteAsync(int id)
         {
             return await _repository.SoftDeleteAsync(id);
+        }
+
+        public virtual TEntity SoftDelete(int id)
+        {
+            return _repository.SoftDelete(id);
         }
 
         /// <summary>Gets an entity where the id contains the specified id to match.</summary>
@@ -62,6 +67,11 @@ namespace Horeb.MoneySaver.Service.Common
         public virtual async Task<TEntity> CreateAsync(TEntity entity)
         {
             return await _repository.CreateAsync(entity);
+        }
+
+        public virtual TEntity Create(TEntity entity)
+        {
+            return _repository.Create(entity);
         }
     }
 }
