@@ -2,9 +2,18 @@
 
 namespace Horeb.Domain.TransactionModule
 {
-    public class Category : BaseEntity
+    public class TransactionCategory : BaseEntity
     {
-        public Category(string name) : base() {            
+        private readonly string _defaultName = "Other Expense";
+        private readonly CategoryType _defaultType = CategoryType.Expense;
+
+        public TransactionCategory()
+        {
+            Name = _defaultName;
+            Type = _defaultType;
+        }
+
+        public TransactionCategory(string name) : base() {
             Name = name;
         }
 

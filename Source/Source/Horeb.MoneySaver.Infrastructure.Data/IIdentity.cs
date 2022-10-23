@@ -3,12 +3,12 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Horeb.Infrastructure.Data
 {
-    public interface IValue<T>
+    public interface IIdentity<T>
     {
         T Id { get; set;}
     }
 
-    public abstract class Value<V> : IValue<V>
+    public abstract class Identity<V> : IIdentity<V>
     {
         private V _id;
         private bool _idHasBeenSet = false;

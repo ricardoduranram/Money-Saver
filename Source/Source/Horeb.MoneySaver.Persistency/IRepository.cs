@@ -16,8 +16,10 @@ namespace Horeb.MoneySaver.Persistency
         Task<TEntity> UpdateAsync(TEntity entity);
         TEntity Update(TEntity entity);
         void UpdateRange(IEnumerable<TEntity> entities);
-        Task<TEntity> SoftDeleteAsync(int id);        
-        Task<TEntity> CreateAsync(TEntity entity);        
+        Task<TEntity> SoftDeleteAsync(int id);
+        TEntity SoftDelete(int id);
+        Task<TEntity> CreateAsync(TEntity entity);
+        TEntity Create(TEntity entity);
         Task<IEnumerable<TEntity>> GetByExpression(
             Expression<Func<TModel, bool>> expression);
     }

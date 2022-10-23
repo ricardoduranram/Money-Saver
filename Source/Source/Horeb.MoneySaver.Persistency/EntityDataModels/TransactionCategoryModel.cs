@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Horeb.MoneySaver.Persistency.EntityDataModels
 {
     [Table(TableNames.Category)]
-    public class CategoryModel: BaseEntity
+    public class TransactionCategoryModel: BaseEntity
     {
         [Required]
         [StringLength(200)]

@@ -24,14 +24,14 @@ namespace Horeb.MoneySaver.Service.BookkeepingModule
             _periodService = periodService;
         }
 
-        public async Task<BalanceStatement?> GetByMonthlyPeriodIdAndWalletId(
-            int monthlyPeriodId,
+        public async Task<BalanceStatement?> GetByIterationTimeIdAndWalletId(
+            int iterationTimeId,
             int walletId)
         {
-            IEnumerable<BalanceStatement> mbes = await _repository.GetByExpression((mbe) =>
-                mbe.PeriodId == monthlyPeriodId && mbe.WalletId == walletId);
+            IEnumerable<BalanceStatement> bes = await _repository.GetByExpression((be) =>
+                be.IterationTimeId == iterationTimeId && be.WalletId == walletId);
 
-            return mbes.SingleOrDefault();
+            return bes.SingleOrDefault();
         }
 
         public async Task<IEnumerable<BalanceStatement>> GetByDateRangeForWalletId(
@@ -39,15 +39,18 @@ namespace Horeb.MoneySaver.Service.BookkeepingModule
             int walletId)
         {
 
-            var periods = await this._periodService.GetByDateRange(dateRange);
-            List<int> periodIds = periods.Select(period => period.Id).ToList();
+            var periods = await this._periodService.GetByDateRangeAsync(dateRange);
+            List<int> iterationTimeIds = periods
+                .Where(period => period.HasIterationTime())
+                .Select(period => period.IterationTimeId)
+                .ToList();
 
-            var mbes = await this._repository.GetByExpression((mbe) =>
-                periodIds.Contains(mbe.PeriodId)
+            var balanceStatements = await this._repository.GetByExpression((mbe) =>
+                iterationTimeIds.Contains(mbe.IterationTimeId)
                     && mbe.WalletId == walletId
             );
 
-            return mbes;
+            return balanceStatements;
         }
 
         public async Task AdjustBalancesFromDateRange(

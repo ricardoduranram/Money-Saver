@@ -32,16 +32,15 @@ namespace Horeb.MoneySaver.Service.BookkeepingModule
         }
 
         //Currently is not the booking service responsibility to create the balance statement or the period
-        public async Task RecordTransactionAsync(Transaction transaction)
-        {
-            CheckTransactionIntegrity(transaction);
+        public async Task RecordTransactionAsync(Transaction transaction) {
+            await CheckTransactionIntegrity(transaction);
 
             Task<Wallet> getWalletTask = _walletService.GetByIdAsync(transaction.WalletId);
-            Task<Category> getTransactionCategoryTask =
-                _categoryService.GetByIdAsync(transaction.CategoryId);
+            Task<TransactionCategory> getTransactionCategoryTask =
+                _categoryService.GetByIdAsync(transaction.Category.Id);
             Task<Transaction> createTask = _repository.CreateAsync(transaction);
-                        
-            Category transactionCategory = await getTransactionCategoryTask;
+            
+            TransactionCategory transactionCategory = await getTransactionCategoryTask;
             decimal adjustment = transactionCategory.ConvertAmmountToExpenseOrIncome(transaction.Amount);
 
             Task balancesAdjustmentTask =
@@ -59,22 +58,21 @@ namespace Horeb.MoneySaver.Service.BookkeepingModule
             await balancesAdjustmentTask;
         }
 
-        private void CheckTransactionIntegrity(Transaction transaction)
+        private async Task CheckTransactionIntegrity(Transaction transaction)
         {
-            if (transaction == null) { 
-                throw new ArgumentNullException(nameof(transaction), $"Is null or empty"); 
+            if (transaction == null) {
+                throw new ArgumentNullException(nameof(transaction), $"Is null or empty");
             }
-            if (transaction.Amount < 0) { 
+
+            if (transaction.Amount < 0) {
                 throw new ArgumentOutOfRangeException($"Amount out of range {transaction.Amount}"); 
             }
 
-            Period period =
-                _periodService.GetById(transaction.MonthlyPeriodId);
+            MonthlyPeriod period =
+                await _periodService.GetByDateAsync(transaction.UtcOccurredOn);
 
-            if (!period.IsDateWithin(transaction.UtcOccurredOn))
-            {
-                throw new ArgumentException(
-                    $"{nameof(transaction)} date of occurrance does not match assigned MonthlyPeriodId");
+            if (period == null) {
+                throw new InvalidOperationException($"{nameof(Transaction)} There must be a period in which Transaction resides.");
             }
         }
     }

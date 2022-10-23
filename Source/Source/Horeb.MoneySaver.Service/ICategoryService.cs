@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Horeb.MoneySaver.Service
 {
-    public interface ICategoryService: IBaseCrudService<Category>
+    public interface ICategoryService: IBaseCrudService<TransactionCategory>
     {
     }
 }
