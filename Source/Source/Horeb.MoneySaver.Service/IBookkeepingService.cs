@@ -2,10 +2,9 @@
 using System;
 
 
-namespace Horeb.MoneySaver.Service
+namespace Horeb.MoneySaver.Service;
+
+public interface IBookkeepingService
 {
-    public interface IBookkeepingService
-    {        
-        Task RecordTransactionAsync(Transaction transaction);      
-    }
+    Task RecordTransactionAsync (Transaction transaction);
 }

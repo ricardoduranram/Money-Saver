@@ -1,24 +1,19 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace Horeb.Infrastructure.Data
-{    
-    /// <summary>
-    ///     Provides a base class for your objects which will be persisted to the database.
-    /// </summary>
-    public abstract class BaseEntity : Identity<int>, IAuditTrails
-    {
-        [Required]
-        public DateTime UtcCreatedOn { get; set; } = DateTime.Now.ToUniversalTime();
+namespace Horeb.Infrastructure.Data;
 
-        [Required]
-        public DateTime UtcLastestUpdateOn { get; set; } = DateTime.Now.ToUniversalTime();
+/// <summary>
+///     Provides a base class for your objects which will be persisted to the database.
+/// </summary>
+public abstract class BaseEntity : Identity<int>, IAuditTrails
+{
+    [Required]
+    public DateTime UtcCreatedOn { get; set; } = DateTime.Now.ToUniversalTime();
 
-        public bool IsActive()
-        {
-            return !this.IsDeleted;
-        }
+    [Required]
+    public DateTime UtcLastestUpdateOn { get; set; } = DateTime.Now.ToUniversalTime();
 
-        public bool IsDeleted { get; set; }
-    }    
+    public bool IsActive () => !this.IsDeleted;
+
+    public bool IsDeleted { get; set; }
 }

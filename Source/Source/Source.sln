@@ -27,7 +27,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Horeb.MoneySaver.Infrastruc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Horeb.MoneySaver.Service.UnitTest", "Horeb.MoneySaver.Service.UnitTest\Horeb.MoneySaver.Service.UnitTest.csproj", "{E2B200BB-8923-4390-BD81-DDD8DAB409A0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Horeb.MoneySaver.Infrastructure.Data.Test", "Horeb.MoneySaver.Infrastructure.Data.Test\Horeb.MoneySaver.Infrastructure.Data.Test.csproj", "{F977E5B9-E76E-4DFA-AC75-3277F34CE764}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Horeb.MoneySaver.Infrastructure.Data.Test", "Horeb.MoneySaver.Infrastructure.Data.Test\Horeb.MoneySaver.Infrastructure.Data.Test.csproj", "{F977E5B9-E76E-4DFA-AC75-3277F34CE764}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

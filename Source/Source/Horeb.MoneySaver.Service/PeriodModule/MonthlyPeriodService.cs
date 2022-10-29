@@ -10,60 +10,55 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Horeb.MoneySaver.Service.PeriodModule
+namespace Horeb.MoneySaver.Service.PeriodModule;
+
+public class MonthlyPeriodService : IPeriodService
 {
-    public class MonthlyPeriodService : IPeriodService
-    {        
-        private readonly IIterationTimeService _iterationTimeService;
-        private readonly IAppSettingsService _appSettingsService;
+    private readonly IIterationTimeService _iterationTimeService;
+    private readonly IAppSettingsService _appSettingsService;
 
-        public MonthlyPeriodService(
-            IIterationTimeService iterationTimeService,
-            IAppSettingsService appSettingsService)
-        {
-            _iterationTimeService = iterationTimeService;
-            _appSettingsService = appSettingsService;
-        }
+    public MonthlyPeriodService (
+        IIterationTimeService iterationTimeService,
+        IAppSettingsService appSettingsService) {
+        this._iterationTimeService = iterationTimeService;
+        this._appSettingsService = appSettingsService;
+    }
 
-        public async Task<MonthlyPeriod> GetByDateAsync(DateTime utcDate)
-        {
-            //For now we will assume the start day of the cycle is the first day of the month
-            //this logic will change once configurations changes are supported.
-            AppSettings appSettings = _appSettingsService.GetSingle();          
-            Task<IterationTime?> getTterationTime =
-                _iterationTimeService.GetByYearAndCycleNumber(utcDate.Year, utcDate.Month);            
+    public async Task<MonthlyPeriod> GetByDateAsync (DateTime utcDate) {
+        //For now we will assume the start day of the cycle is the first day of the month
+        //this logic will change once configurations changes are supported.
+        AppSettings appSettings = this._appSettingsService.GetSingle();
+        Task<IterationTime?> getTterationTime =
+            this._iterationTimeService.GetByYearAndCycleNumber(utcDate.Year, utcDate.Month);
 
-            IterationTime? iterationTime = await getTterationTime;            
-            
-            DateTime periodStart = new (utcDate.Year, utcDate.Month, appSettings.CyclceStartDay);
+        IterationTime? iterationTime = await getTterationTime;
 
-            return new MonthlyPeriod(periodStart)
+        DateTime periodStart = new(utcDate.Year, utcDate.Month, appSettings.CyclceStartDay);
+
+        return new MonthlyPeriod(periodStart)
             {
                 IterationTimeId = iterationTime?.Id ?? 0
-            };           
-        }
+            };
+    }
 
-        public async Task<List<MonthlyPeriod>> GetByDateRangeAsync((DateTime UtcStart, DateTime UtcEnd) range)
-        {
-            //For now we will assume the start day of the cycle is the first day of the month
-            //this logic will change once configurations changes are supported.
-            List<MonthlyPeriod> montlyPeriods = new List<MonthlyPeriod>();
+    public async Task<List<MonthlyPeriod>> GetByDateRangeAsync ((DateTime UtcStart, DateTime UtcEnd) range) {
+        //For now we will assume the start day of the cycle is the first day of the month
+        //this logic will change once configurations changes are supported.
+        List<MonthlyPeriod> montlyPeriods = new List<MonthlyPeriod>();
 
-            MonthlyPeriod currentPeriod = await GetByDateAsync(range.UtcStart);
-            montlyPeriods.Add(currentPeriod);
-            do
-            {
-                IPeriodSpan nextPeriod = currentPeriod.Next();
-                Task<IterationTime?> getTterationTime =
-                _iterationTimeService.GetByYearAndCycleNumber(nextPeriod.UtcStart.Year, nextPeriod.UtcStart.Month);
+        MonthlyPeriod currentPeriod = await GetByDateAsync(range.UtcStart);
+        montlyPeriods.Add(currentPeriod);
+        do {
+            IPeriodSpan nextPeriod = currentPeriod.Next();
+            Task<IterationTime?> getTterationTime =
+            this._iterationTimeService.GetByYearAndCycleNumber(nextPeriod.UtcStart.Year, nextPeriod.UtcStart.Month);
 
-                ((MonthlyPeriod)nextPeriod).IterationTimeId = getTterationTime?.Id ?? 0;
-                montlyPeriods.Add((MonthlyPeriod)currentPeriod);
-                currentPeriod = (MonthlyPeriod)nextPeriod;
+            ((MonthlyPeriod) nextPeriod).IterationTimeId = getTterationTime?.Id ?? 0;
+            montlyPeriods.Add((MonthlyPeriod) currentPeriod);
+            currentPeriod = (MonthlyPeriod) nextPeriod;
 
-            } while (currentPeriod.Includes(range.UtcEnd));
+        } while (currentPeriod.Includes(range.UtcEnd));
 
-            return montlyPeriods;
-        }
+        return montlyPeriods;
     }
 }
