@@ -1,5 +1,6 @@
 ﻿using Horeb.Infrastructure.Data;
 using Horeb.MoneySaver.Persistency.Common;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -7,6 +8,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Horeb.MoneySaver.Persistency.EntityDataModels;
 
 [Table(TableNames.Transaction)]
+[Index(nameof(UtcOccurredOn))]
 public class TransactionModel : BaseEntity
 {
     [Required]
